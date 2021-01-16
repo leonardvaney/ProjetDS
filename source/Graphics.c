@@ -5,7 +5,6 @@
 #include "background_sky.h"
 #include "belowTiles.h"
 #include "upperTiles.h"
-#include "costumTiles.h"
 #include "jeu.h"
 
 //Couleurs de la barre du temps

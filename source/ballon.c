@@ -8,6 +8,10 @@
 #include "Graphics.h"
 #include "Timer.h"
 
+#include <maxmod9.h>
+#include "soundbank.h"
+#include "soundbank_bin.h"
+
 //Configuration du temps total pour faire le mini jeux
 void configuration_temp_total(game_status* status){
 	status->minigame_total_time = TEMPS_MAX_BALLON/(status->vitesse->nombre) + TEMPS_MIN_BALLON;
@@ -234,6 +238,7 @@ void mini_jeu_ballon(game_status* status)
 				swiCopy(spriteBallonCassePal, SPRITE_PALETTE, spriteBallonCassePalLen/2);
 				swiCopy(spriteBallonCasseTiles, gfx_ballon, spriteBallonCasseTilesLen/2);
 			}
+			//mmEffect(SFX_ECHEC);
 		}
 
 		if(collision_objectif(ballonX, ballonY)){
@@ -242,6 +247,7 @@ void mini_jeu_ballon(game_status* status)
 			status->score->nombre += 1;
 			status->difficulte->nombre = (status->difficulte->nombre % 3) + 1;
 			if(status->difficulte->nombre == 1) status->vitesse->nombre += 1;
+			//mmEffect(SFX_VICTOIRE);
 		}
 	}
 

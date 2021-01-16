@@ -5,6 +5,10 @@
 #include "coupe.h"
 #include "Timer.h"
 
+#include <maxmod9.h>
+#include "soundbank.h"
+#include "soundbank_bin.h"
+
 #define MAX_OBJECTIF 5
 
 objectif_coupe* list_of_objectif[MAX_OBJECTIF]; //contient tous les objets à toucher
@@ -131,11 +135,13 @@ void mini_jeu_coupe(game_status* status){
 			status->score->nombre += 1;
 			status->difficulte->nombre = (status->difficulte->nombre % 3) + 1;
 			if(status->difficulte->nombre == 1) status->vitesse->nombre += 1;
+			mmEffect(SFX_VICTOIRE);
 		}
 
 		if(status->minigame_left_time <= 0){ //échec par le temps
 			echec = true;
 			status->vie_restante -= 1;
+			mmEffect(SFX_ECHEC);
 		}
 
 		swiWaitForVBlank();

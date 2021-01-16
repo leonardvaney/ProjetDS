@@ -90,6 +90,12 @@ int main(void) {
 
 	srand(time(NULL)); //IMPORTANT (à faire une seule fois)
 
+	mmInitDefaultMem((mm_addr)soundbank_bin);
+	mmLoad(MOD_MARIOPAINT);
+	mmLoadEffect(SFX_ECHEC);
+	mmLoadEffect(SFX_VICTOIRE);
+
+	mmStart(MOD_MARIOPAINT, MM_PLAY_LOOP);
 
 	//while général qui contient tout le déroulement du jeu
 	while(1){
