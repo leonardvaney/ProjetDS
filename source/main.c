@@ -92,8 +92,8 @@ int main(void) {
 
 	mmInitDefaultMem((mm_addr)soundbank_bin);
 	mmLoad(MOD_MARIOPAINT);
-	mmLoadEffect(SFX_ECHEC);
-	mmLoadEffect(SFX_VICTOIRE);
+	mmLoadEffect(SFX_BALLON1);
+	mmLoadEffect(SFX_VICTOIRE2);
 
 	mmStart(MOD_MARIOPAINT, MM_PLAY_LOOP);
 
@@ -108,7 +108,12 @@ int main(void) {
 
 		//réinitialisation du score
 		status.score->nombre = 0;
+		upper_ini_ingame_screen();
 		upper_afficher_compteur(status.score);
+		upper_afficher_vie(&status);
+		upper_afficher_compteur(status.difficulte);
+		upper_afficher_compteur(status.vitesse);
+		upper_afficher_barre(32);
 
 		//boucle qui lance les jeux
 		while(status.vie_restante != 0){
