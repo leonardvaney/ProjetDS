@@ -238,7 +238,7 @@ void mini_jeu_ballon(game_status* status)
 				swiCopy(spriteBallonCassePal, SPRITE_PALETTE, spriteBallonCassePalLen/2);
 				swiCopy(spriteBallonCasseTiles, gfx_ballon, spriteBallonCasseTilesLen/2);
 			}
-			//mmEffect(SFX_ECHEC);
+			mmEffect(SFX_ECHEC);
 		}
 
 		if(collision_objectif(ballonX, ballonY)){
@@ -247,7 +247,7 @@ void mini_jeu_ballon(game_status* status)
 			status->score->nombre += 1;
 			status->difficulte->nombre = (status->difficulte->nombre % 3) + 1;
 			if(status->difficulte->nombre == 1) status->vitesse->nombre += 1;
-			//mmEffect(SFX_VICTOIRE);
+			mmEffect(SFX_VICTOIRE);
 		}
 	}
 

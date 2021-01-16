@@ -135,13 +135,13 @@ void mini_jeu_coupe(game_status* status){
 			status->score->nombre += 1;
 			status->difficulte->nombre = (status->difficulte->nombre % 3) + 1;
 			if(status->difficulte->nombre == 1) status->vitesse->nombre += 1;
-			//mmEffect(SFX_VICTOIRE);
+			mmEffect(SFX_VICTOIRE);
 		}
 
 		if(status->minigame_left_time <= 0){ //échec par le temps
 			echec = true;
 			status->vie_restante -= 1;
-			//mmEffect(SFX_ECHEC);
+			mmEffect(SFX_ECHEC);
 		}
 
 		swiWaitForVBlank();
