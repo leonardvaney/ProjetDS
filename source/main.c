@@ -45,7 +45,6 @@ void EcranTemporaire(){
 	below_ini_ingame_screen();
 }
 
-
 int main(void) {
 
 	//Initialisation des graphiques
@@ -53,6 +52,9 @@ int main(void) {
 	upper_ini_ingame_screen();
 	below_ini_ingame_screen();
 	below_ini_title_screen();
+
+	//Allocation de l'espace pour le graph afin d'afficher le sprite
+	gfx_ballon = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 
 	//Initialisation des variables
 	bool lancement_du_jeu;
@@ -90,12 +92,14 @@ int main(void) {
 
 	srand(time(NULL)); //IMPORTANT (à faire une seule fois)
 
+	//Initialisation du son
 	mmInitDefaultMem((mm_addr)soundbank_bin);
 	mmLoad(MOD_MARIOPAINT);
 	mmLoadEffect(SFX_ECHEC);
 	mmLoadEffect(SFX_VICTOIRE);
 
 	mmStart(MOD_MARIOPAINT, MM_PLAY_LOOP);
+
 
 	//while général qui contient tout le déroulement du jeu
 	while(1){

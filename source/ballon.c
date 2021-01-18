@@ -18,20 +18,6 @@ void configuration_temp_total(game_status* status){
 	AnnexeCounter(status);
 }
 
-//Initialisation et mise en mémoire du sprite du ballon
-void configuration_Sprites()
-{
-	//Initialisation de sprite manager and the engine
-	oamInit(&oamMain, SpriteMapping_1D_32, false);
-
-	//Allocation de l'espace pour le graph afin d'afficher le sprite
-	gfx_ballon = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
-
-	//Copie dans la memoire de la bitmap et palette
-	swiCopy(spriteBallonPal, SPRITE_PALETTE, spriteBallonPalLen/2);
-	swiCopy(spriteBallonTiles, gfx_ballon, spriteBallonTilesLen/2);
-}
-
 void afficher_objectif_rouge(){
 	BG_MAP_RAM(1)[SCREEN_TILE_WIDTH*OBJECTIF_TILEY + OBJECTIF_TILEX] = OFF_OBJECTIF_ROUGE;
 	BG_MAP_RAM(1)[SCREEN_TILE_WIDTH*OBJECTIF_TILEY + OBJECTIF_TILEX+1] = 1+OFF_OBJECTIF_ROUGE;
@@ -174,9 +160,10 @@ int collision_objectif(int ballonX, int ballonY){
 }
 
 
+
 void mini_jeu_ballon(game_status* status)
 {
-	//Inisialisation variables
+	//Initialisation variables
 	int ballonX = BALLON_STARTX, ballonY = BALLON_STARTY, keys;
 	bool echec = false;
 	bool succes = false;
@@ -193,8 +180,10 @@ void mini_jeu_ballon(game_status* status)
 	afficher_obstacles(obstacles_head);
 	afficher_objectif_rouge();
 
-	//Configuration des sprites et initialisation des graphiques
-	configuration_Sprites();
+	//Initialisation de sprite manager and the engine
+	oamInit(&oamMain, SpriteMapping_1D_32, false);
+	swiCopy(spriteBallonPal, SPRITE_PALETTE, spriteBallonPalLen/2);
+	swiCopy(spriteBallonTiles, gfx_ballon, spriteBallonTilesLen/2);
 
 	//Boucle principal du mini jeu
 	while(!echec && !succes){
