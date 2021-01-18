@@ -20,6 +20,12 @@ Contributors
 - Léonard Vaney
 - Aloïs Mattei
 
+### Musical assets
+
+- The two sounds come from this site: https://www.wavsource.com/sfx/sfx.htm
+- The background music is "Creative Exercise" from the SNES game "Mario paint" (This version of the song come from this site: http://snesmusic.org/v2/).
+
+We do not own any rights over these musical assets and we use it only on academical purpose.
 
 ### Special Thanks
 
